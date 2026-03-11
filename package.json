@@ -1,0 +1,116 @@
+{
+  "name": "copy-path-for-claude-code-vscode",
+  "displayName": "Copy Path for Claude Code (VS Code)",
+  "description": "VS Code extension that copies file/folder references in Claude Code @-mention format (@path/to/file#L42-68)",
+  "version": "1.1.0",
+  "publisher": "teppasit",
+  "author": {
+    "name": "Teppasit",
+    "email": "teppasit.w@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inwpasit619/copy-path-for-claude-code-vscode"
+  },
+  "homepage": "https://github.com/inwpasit619/copy-path-for-claude-code-vscode#readme",
+  "bugs": {
+    "url": "https://github.com/inwpasit619/copy-path-for-claude-code-vscode/issues"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Other"],
+  "keywords": ["claude", "claude-code", "copy-path", "ai", "reference"],
+  "icon": "resources/icon.png",
+  "galleryBanner": {
+    "color": "#D77655",
+    "theme": "dark"
+  },
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "copyPathForClaudeCode.copy",
+        "title": "Copy Path for Claude Code"
+      },
+      {
+        "command": "copyPathForClaudeCode.copyFromExplorer",
+        "title": "Copy Path for Claude Code (Explorer)"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "copyPathForClaudeCode.copy",
+          "group": "9_cutcopypaste@50"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "copyPathForClaudeCode.copy",
+          "group": "6_copypath@50"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "copyPathForClaudeCode.copyFromExplorer",
+          "when": "false"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "copyPathForClaudeCode.copy",
+        "key": "alt+c",
+        "mac": "alt+c",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "copyPathForClaudeCode.copyFromExplorer",
+        "key": "alt+c",
+        "mac": "alt+c",
+        "when": "filesExplorerFocus"
+      }
+    ],
+    "configuration": {
+      "title": "Copy Path for Claude Code",
+      "properties": {
+        "copyPathForClaudeCode.appendTrailingSpace": {
+          "type": "boolean",
+          "default": true,
+          "description": "Append a trailing space after the copied reference"
+        },
+        "copyPathForClaudeCode.multipleReferencesSeparator": {
+          "type": "string",
+          "enum": ["Space", "Newline"],
+          "default": "Space",
+          "description": "Separator between multiple references"
+        },
+        "copyPathForClaudeCode.showNotification": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show notification after copying"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/suite/index.js"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.0",
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.80.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.0.0",
+    "mocha": "^10.0.0",
+    "typescript": "^5.0.0"
+  }
+}
