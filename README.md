@@ -23,9 +23,12 @@ VS Code extension that copies file/folder references in Claude Code `@`-mention 
 
 | Context | Shortcut | Behavior |
 |---------|----------|----------|
-| Editor (no selection) | `Alt+C` | Copy file path |
-| Editor (with selection) | `Alt+C` | Copy with line range |
-| Explorer | `Alt+C` | Copy selected file/folder paths |
+| Editor (no selection) | `Cmd+Alt+C` | Copy file path (with current line when enabled) |
+| Editor (with selection) | `Cmd+Alt+C` | Copy with line range |
+| Explorer | `Cmd+Alt+C` | Copy selected file/folder paths |
+| Office / webview preview | `Cmd+Alt+C` | Native copy of selection (macOS) |
+
+On macOS, pair with Karabiner: `Option+C → Cmd+Option+C` only in VS Code.
 
 ## Settings
 
@@ -39,4 +42,4 @@ VS Code extension that copies file/folder references in Claude Code `@`-mention 
 
 ## License
 
-[MIT](LICENSE)
+[MIT](https://github.com/yanggggjie/copy-path-for-claude-code-vscode/blob/HEAD/LICENSE)

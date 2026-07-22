@@ -1,27 +1,41 @@
 {
-  "name": "copy-path-for-claude-code-vscode",
-  "displayName": "Copy Path for Claude Code (VS Code)",
-  "description": "VS Code extension that copies file/folder references in Claude Code @-mention format (@path/to/file#L42-68)",
-  "version": "1.1.0",
-  "publisher": "teppasit",
+  "name": "copy-path-for-agent",
+  "displayName": "Copy Path for Agent (VS Code)",
+  "description": "VS Code extension that copies file/folder references in agent @-mention format (@path/to/file#L42-68). Forked from Copy Path for Claude Code by Teppasit W.",
+  "version": "1.1.5",
+  "publisher": "yanggggjie",
   "author": {
-    "name": "Teppasit",
-    "email": "teppasit.w@gmail.com"
+    "name": "yanggggjie"
   },
+  "contributors": [
+    {
+      "name": "Teppasit",
+      "email": "teppasit.w@gmail.com"
+    }
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/inwpasit619/copy-path-for-claude-code-vscode"
+    "url": "https://github.com/yanggggjie/copy-path-for-claude-code-vscode.git"
   },
-  "homepage": "https://github.com/inwpasit619/copy-path-for-claude-code-vscode#readme",
+  "homepage": "https://github.com/yanggggjie/copy-path-for-claude-code-vscode#readme",
   "bugs": {
-    "url": "https://github.com/inwpasit619/copy-path-for-claude-code-vscode/issues"
+    "url": "https://github.com/yanggggjie/copy-path-for-claude-code-vscode/issues"
   },
   "engines": {
     "vscode": "^1.80.0"
   },
-  "categories": ["Other"],
-  "keywords": ["claude", "claude-code", "copy-path", "ai", "reference"],
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "agent",
+    "claude",
+    "claude-code",
+    "copy-path",
+    "ai",
+    "reference"
+  ],
   "icon": "resources/icon.png",
   "galleryBanner": {
     "color": "#D77655",
@@ -63,15 +77,21 @@
     "keybindings": [
       {
         "command": "copyPathForClaudeCode.copy",
-        "key": "alt+c",
-        "mac": "alt+c",
+        "key": "ctrl+alt+c",
+        "mac": "cmd+alt+c",
         "when": "editorTextFocus"
       },
       {
         "command": "copyPathForClaudeCode.copyFromExplorer",
-        "key": "alt+c",
-        "mac": "alt+c",
+        "key": "ctrl+alt+c",
+        "mac": "cmd+alt+c",
         "when": "filesExplorerFocus"
+      },
+      {
+        "command": "copyPathForClaudeCode.copy",
+        "key": "ctrl+alt+c",
+        "mac": "cmd+alt+c",
+        "when": "!editorTextFocus && !filesExplorerFocus && !terminalFocus"
       }
     ],
     "configuration": {
@@ -84,7 +104,10 @@
         },
         "copyPathForClaudeCode.multipleReferencesSeparator": {
           "type": "string",
-          "enum": ["Space", "Newline"],
+          "enum": [
+            "Space",
+            "Newline"
+          ],
           "default": "Space",
           "description": "Separator between multiple references"
         },
@@ -92,6 +115,16 @@
           "type": "boolean",
           "default": true,
           "description": "Show notification after copying"
+        },
+        "copyPathForClaudeCode.copyCurrentLineWhenNoSelection": {
+          "type": "boolean",
+          "default": true,
+          "description": "When no text is selected (single cursor), include the cursor's line number in the copied reference"
+        },
+        "copyPathForClaudeCode.useAbsolutePath": {
+          "type": "boolean",
+          "default": true,
+          "description": "Copy the full absolute filesystem path instead of the workspace-relative path"
         }
       }
     }

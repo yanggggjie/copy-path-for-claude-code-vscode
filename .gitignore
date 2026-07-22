@@ -12,6 +12,7 @@ out/
 
 # IDE
 .vscode-test/
+.idea/
 
 # OS
 .DS_Store
